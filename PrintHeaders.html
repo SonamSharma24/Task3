@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>PrintHeaders</h1>
+    <script>
+        // Define the API endpoint and the data to post
+        const apiEndpoint = 'https://chimpu.online/api/post.php';
+        const dataToPost = {
+            phonenumber: '+91 7896451230' // Replace with the actual phone number
+        };
+        async function postDataAndPrintHeaders() {
+            try {
+                // Post data to the API endpoint
+                const response = await fetch(apiEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dataToPost)
+                });
+                if (response) {
+                    // Print all headers
+                    // console.log('Headers received from the API:');
+                    for (const [key, value] of response.headers) {
+                        console.log(`${key}: ${value}`);
+                    }
+                } 
+                else {
+                    console.log('Error: Response not OK');
+                }
+            } 
+            catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        postDataAndPrintHeaders();
+
+    </script>
+</body>
+
+</html>
